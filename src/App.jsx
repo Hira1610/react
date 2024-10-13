@@ -60,34 +60,94 @@
 
 
 ///TWO WAY BINDING
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
+// const App = () => {
+
+//   const [username, setusername] = useState('')
+
+//   const submitHandler = (e)=>{
+//     e.preventDefault() //ya hmra page reload ni kry ga
+//     console.log(username)
+//     setusername('')
+//   }
+//   return (
+//     <div>
+//       <form onSubmit={(e)=>{
+//         submitHandler(e)
+//       }}>
+//         <input 
+//         value={username}
+//         onChange={(e)=>{
+//           setusername(e.target.value)
+//         }}
+//         className='px-4 py-3 rounded text-xl m-5 text-black font-semibold' 
+//         type="text" 
+//         placeholder='Enter your name' />
+//         <button className='px-4 py-3 m-6 rounded text-xl font-semibold bg-emerlad-500 text-white'> Submit</button>
+//       </form>
+//     </div>
+//   )
+// }
+// export default App
+
+
+
+
+////PROPS 
+import React from 'react'
+import Card from './components/Card'
 const App = () => {
+  const users = [
+    {
+      "username": "john_doe",
+      "surname": "Doe",
+      "city": "New York",
+      "age": 28,
+      "profilePhoto": "https://example.com/profiles/john_doe.jpg"
+    },
+    {
+      "username": "jane_smith",
+      "surname": "Smith",
+      "city": "Los Angeles",
+      "age": 32,
+      "profilePhoto": "https://example.com/profiles/jane_smith.jpg"
+    },
+    {
+      "username": "mike_johnson",
+      "surname": "Johnson",
+      "city": "Chicago",
+      "age": 25,
+      "profilePhoto": "https://example.com/profiles/mike_johnson.jpg"
+    },
+    {
+      "username": "emma_brown",
+      "surname": "Brown",
+      "city": "Houston",
+      "age": 30,
+      "profilePhoto": "https://example.com/profiles/emma_brown.jpg"
+    },
+    {
+      "username": "lucas_miller",
+      "surname": "Miller",
+      "city": "Phoenix",
+      "age": 27,
+      "profilePhoto": "https://example.com/profiles/lucas_miller.jpg"
+    }
+  ]
 
-  const [username, setusername] = useState('')
-
-  const submitHandler = (e)=>{
-    e.preventDefault() //ya hmra page reload ni kry ga
-    console.log(username)
-    setusername('')
-  }
+  // const num = 10
   return (
     <div>
-      <form onSubmit={(e)=>{
-        submitHandler(e)
-      }}>
-        <input 
-        value={username}
-        onChange={(e)=>{
-          setusername(e.target.value)
-        }}
-        className='px-4 py-3 rounded text-xl m-5 text-black font-semibold' 
-        type="text" 
-        placeholder='Enter your name' />
-        <button className='px-4 py-3 m-6 rounded text-xl font-semibold bg-emerlad-500 text-white'> Submit</button>
-      </form>
+      <div className='p-10'>
+        {/* <Card a={num} /> */}
+        
+        {users.map(function(elem,idx){
+          return <Card  key={idx} username={elem.username} surname={elem.surname} city={elem.city} age={elem.age} photo={elem.profilePhoto} />
+        })}
+      </div>
     </div>
   )
 }
-export default App
 
+export default App
